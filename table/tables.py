@@ -25,6 +25,13 @@ class User(db.Model):
             'email':self.email,
             'password':self.password
         }
+    def to_dict1(self):
+        return {
+            # 'id':self.id,
+            'name':self.name,
+            'email':self.email,
+            # 'password':self.password
+        }
 
 
 class Task(db.Model):

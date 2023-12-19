@@ -137,6 +137,24 @@ class Tasklist(Resource):
             task_list.append(ta.to_dict())
         return {"task_list":task_list}
 
+class Userlist(Resource):
+    def __init__(self):
+        pass
+
+    def get(self):
+        limit=request.args.get('limit',default=5,type=int)
+        try:
+            user=User.query.all()
+            emp=[]
+            for u in user:
+                a=u.to_dict1()
+                emp.append(a)
+            return {'Userlist': emp[:limit]}
+
+            # return {'User_list':[users.to_dict1() for users in user]}
+        except Exception as e:
+            return {'message':str(e)}
+
 
 
 
